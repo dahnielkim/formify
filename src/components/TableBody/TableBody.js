@@ -7,6 +7,7 @@ const TableBody = props => (
         type={props.typeAbbrev}
         keyValue={props.typeLong}
         handleChange={props.fn}
+        handleRemove={props.deleteFn}
     />
 );
 

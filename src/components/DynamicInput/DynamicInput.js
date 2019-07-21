@@ -52,7 +52,12 @@ const DynamicInput = props => {
                     </td>
 
                     <td>
-                        <Button color="danger" size="sm">
+                        <Button
+                            data-type={props.keyValue}
+                            color="danger"
+                            size="sm"
+                            onClick={() => props.handleRemove(props.keyValue, idx)}
+                        >
                             <MdDelete />
                         </Button>
                     </td>

@@ -65,6 +65,14 @@ class App extends Component {
             },
             body: JSON.stringify(this.state),
         });
+
+        console.log('state at submit: ', this.state);
+    };
+
+    removeInvoice = (key, idx) => {
+        let invoices = [...this.state[key]];
+        invoices.splice(idx, 1);
+        this.setState({ [key]: invoices });
     };
 
     render() {
@@ -120,6 +128,7 @@ class App extends Component {
                                 typeAbbrev="Unpaid"
                                 typeLong="unpaidInvoices"
                                 fn={this.handleChange}
+                                deleteFn={this.removeInvoice}
                             />
                         </Table>
                     </FormGroup>
@@ -143,6 +152,7 @@ class App extends Component {
                                 typeAbbrev="Uninvoiced"
                                 typeLong="uninvoicedInvoices"
                                 fn={this.handleChange}
+                                deleteFn={this.removeInvoice}
                             />
                         </Table>
                     </FormGroup>
