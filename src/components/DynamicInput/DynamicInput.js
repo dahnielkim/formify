@@ -1,4 +1,5 @@
 import React from "react";
+import { Label, Input } from "reactstrap";
 
 const DynamicInput = props => {
   return props.invoice.map((val, idx) => {
@@ -8,8 +9,8 @@ const DynamicInput = props => {
 
     return (
       <div key={idx}>
-        <label htmlFor={invoiceId}>{`Invoice #${idx + 1}`} Description</label>
-        <input
+        <Label for={invoiceId}>{`Invoice #${idx + 1}`} Description</Label>
+        <Input
           type="text"
           name={invoiceId}
           data-id={idx}
@@ -19,8 +20,8 @@ const DynamicInput = props => {
           className="description"
         />
 
-        <label htmlFor={amountid}>Amount</label>
-        <input
+        <Label for={amountid}>Amount</Label>
+        <Input
           type="text"
           name={amountid}
           data-id={idx}
@@ -30,8 +31,8 @@ const DynamicInput = props => {
           className="amount"
         />
 
-        <label htmlFor={amountid}>Period</label>
-        <input
+        <Label for={amountid}>Period</Label>
+        <Input
           type="text"
           name={periodId}
           data-id={idx}

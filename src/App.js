@@ -11,7 +11,9 @@ class App extends React.Component {
   };
 
   handleChange = e => {
-    if (["description", "amount", "period"].includes(e.target.className)) {
+    debugger;
+    const className = e.target.className.replace(" form-control", "");
+    if (["description", "amount", "period"].includes(className)) {
       let unpaidInvoices = [...this.state.unpaidInvoices];
 
       unpaidInvoices[e.target.dataset.id][
@@ -70,7 +72,7 @@ class App extends React.Component {
 
         <FormGroup>
           <Button color="primary" onClick={() => this.addUnpaidInvoice()}>
-            Unpaid Invoices
+            Add Unpaid Invoices
           </Button>
           <DynamicInput
             invoice={unpaidInvoices}
