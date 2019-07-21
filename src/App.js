@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import DynamicInput from './components/DynamicInput';
 import { Button, Form, FormGroup, Label, Input, Col, Table, Container } from 'reactstrap';
 import { roundCurrency } from './utils/currencyUtils';
+import './App.css';
 
-class App extends React.Component {
+class App extends Component {
     state = {
         unpaidInvoices: [{ description: '', amount: 0, period: '' }],
         uninvoicedInvoices: [{ description: '', amount: 0, period: '' }],
@@ -60,7 +61,7 @@ class App extends React.Component {
         const { vendor_name, unpaidInvoices, email, uninvoicedInvoices } = this.state;
 
         return (
-            <Container>
+            <Container className="vcf-container">
                 <Form>
                     <FormGroup row>
                         <Label for="vcf-vendor_name" sm={2}>
@@ -73,7 +74,6 @@ class App extends React.Component {
                                 id="vcf-vendor_name"
                                 value={vendor_name}
                                 onChange={this.handleChange}
-                                placeholder="password placeholder"
                             />
                         </Col>
                     </FormGroup>
@@ -88,7 +88,6 @@ class App extends React.Component {
                                 name="email"
                                 id="vcf-email"
                                 onChange={this.handleChange}
-                                placeholder="JohnSmith@sample.com"
                                 value={email}
                             />
                         </Col>
