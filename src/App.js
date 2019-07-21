@@ -42,8 +42,17 @@ class App extends React.Component {
     };
 
     handleSubmit = e => {
-        //TODO: Need to add some functionality here once submit is triggered
         e.preventDefault();
+
+        fetch('/api/email', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.state),
+        });
     };
 
     render() {
