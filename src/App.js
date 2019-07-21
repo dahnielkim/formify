@@ -11,13 +11,12 @@ class App extends React.Component {
   };
 
   handleChange = e => {
-    debugger;
     const className = e.target.className.replace(" form-control", "");
     if (["description", "amount", "period"].includes(className)) {
       let unpaidInvoices = [...this.state.unpaidInvoices];
 
       unpaidInvoices[e.target.dataset.id][
-        e.target.className
+        className
       ] = e.target.value.toUpperCase();
 
       this.setState({ unpaidInvoices }, () =>
@@ -26,6 +25,8 @@ class App extends React.Component {
     } else {
       this.setState({ [e.target.name]: e.target.value.toUpperCase() });
     }
+
+    console.log("Current State: ", this.state);
   };
 
   addUnpaidInvoice = e => {
