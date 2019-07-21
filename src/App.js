@@ -43,6 +43,7 @@ class App extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        console.log('hit');
 
         fetch('/api/email', {
             method: 'POST',
@@ -108,7 +109,7 @@ class App extends React.Component {
                     />
                 </FormGroup>
 
-                <Button>Submit</Button>
+                <Button onClick={this.handleSubmit}>Submit</Button>
             </Form>
         );
     }
