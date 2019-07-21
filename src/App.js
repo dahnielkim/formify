@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import DynamicInput from './components/DynamicInput';
 import TableHeader from './components/TableHeader';
+import TableBody from './components/TableBody';
 import { Button, Form, FormGroup, Label, Input, Col, Table, Container } from 'reactstrap';
 import { roundCurrency } from './utils/currencyUtils';
 import './App.css';
 
 class App extends Component {
+    _invoiceHeaders = ['Description', 'Amount ($)', 'Period', 'Delete'];
     state = {
         unpaidInvoices: [{ description: '', amount: 0, period: '' }],
         uninvoicedInvoices: [{ description: '', amount: 0, period: '' }],
@@ -101,44 +102,47 @@ class App extends Component {
                     </FormGroup>
 
                     <FormGroup>
-                        <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
-                            Add Unpaid Invoices
-                        </Button>
+                        <Col sm="12" md={{ size: 3, offset: 5 }}>
+                            <Button
+                                color="primary"
+                                onClick={() => this.addInvoice('unpaid')}
+                            >
+                                Add Unpaid Invoices
+                            </Button>
+                        </Col>
                     </FormGroup>
 
                     <FormGroup>
                         <Table responsive>
-                            <TableHeader
-                                headerLabels={['Description', 'Amount ($)', 'Period']}
-                            />
-                            <DynamicInput
-                                invoice={this.state.unpaidInvoices}
-                                type="Unpaid"
-                                keyValue="unpaidInvoices"
-                                handleChange={this.handleChange}
+                            <TableHeader headerLabels={this._invoiceHeaders} />
+                            <TableBody
+                                data={this.state.unpaidInvoices}
+                                typeAbbrev="Unpaid"
+                                typeLong="unpaidInvoices"
+                                fn={this.handleChange}
                             />
                         </Table>
                     </FormGroup>
 
                     <FormGroup>
-                        <Button
-                            color="primary"
-                            onClick={() => this.addInvoice('uninvoiced')}
-                        >
-                            Add Uninvoiced Invoices
-                        </Button>
+                        <Col sm="12" md={{ size: 3, offset: 5 }}>
+                            <Button
+                                color="primary"
+                                onClick={() => this.addInvoice('uninvoiced')}
+                            >
+                                Add Uninvoiced Invoices
+                            </Button>
+                        </Col>
                     </FormGroup>
 
                     <FormGroup>
                         <Table responsive>
-                            <TableHeader
-                                headerLabels={['Description', 'Amount ($)', 'Period']}
-                            />
-                            <DynamicInput
-                                invoice={this.state.uninvoicedInvoices}
-                                type="Uninvoiced"
-                                keyValue="uninvoicedInvoices"
-                                handleChange={this.handleChange}
+                            <TableHeader headerLabels={this._invoiceHeaders} />
+                            <TableBody
+                                data={this.state.uninvoicedInvoices}
+                                typeAbbrev="Uninvoiced"
+                                typeLong="uninvoicedInvoices"
+                                fn={this.handleChange}
                             />
                         </Table>
                     </FormGroup>

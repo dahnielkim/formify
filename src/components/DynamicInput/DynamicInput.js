@@ -1,5 +1,6 @@
 import React from 'react';
-import { Input } from 'reactstrap';
+import { Input, Button } from 'reactstrap';
+import { MdDelete } from 'react-icons/md';
 
 const DynamicInput = props => {
     return props.invoice.map((val, idx) => {
@@ -48,6 +49,12 @@ const DynamicInput = props => {
                             value={props.invoice[idx].period}
                             className="period"
                         />
+                    </td>
+
+                    <td>
+                        <Button color="danger" size="sm">
+                            <MdDelete />
+                        </Button>
                     </td>
                 </tr>
             </tbody>
