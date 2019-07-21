@@ -1,2 +1,1 @@
-# vendor-confirm-form
-Vendor Confirm Form
+# Vendor Confirm Form
