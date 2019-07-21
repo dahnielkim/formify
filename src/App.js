@@ -16,12 +16,12 @@ class App extends React.Component {
         const className = evt.target.className.replace(' form-control', '');
 
         if (['description', 'amount', 'period'].includes(className)) {
-            let unpaidInvoices = [...this.state.unpaidInvoices];
+            let invoices = [...this.state[evt.target.dataset.type]];
 
-            unpaidInvoices[evt.target.dataset.id][className] =
+            invoices[evt.target.dataset.id][className] =
                 className !== 'description' ? roundCurrency(evt.target.value) : evt.target.value;
 
-            this.setState({ unpaidInvoices });
+            this.setState({ [evt.target.dataset.type]: invoices });
         } else {
             this.setState({ [evt.target.name]: evt.target.value.toUpperCase() });
         }
@@ -30,14 +30,15 @@ class App extends React.Component {
     };
 
     addInvoice = type => {
-        if (type === 'unpaid')
+        if (type === 'unpaid') {
             this.setState(prevState => ({
                 unpaidInvoices: [...prevState.unpaidInvoices, { description: '', amount: 0, period: '' }],
             }));
-        else
+        } else {
             this.setState(prevState => ({
                 uninvoicedInvoices: [...prevState.uninvoicedInvoices, { description: '', amount: 0, period: '' }],
             }));
+        }
     };
 
     handleSubmit = e => {
@@ -78,14 +79,24 @@ class App extends React.Component {
                     <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
                         Add Unpaid Invoices
                     </Button>
-                    <DynamicInput invoice={unpaidInvoices} type="Unpaid" handleChange={this.handleChange} />
+                    <DynamicInput
+                        invoice={unpaidInvoices}
+                        type="Unpaid"
+                        keyValue="unpaidInvoices"
+                        handleChange={this.handleChange}
+                    />
                 </FormGroup>
 
                 <FormGroup>
                     <Button color="primary" onClick={() => this.addInvoice('uninvoiced')}>
                         Add Uninvoiced Invoices
                     </Button>
-                    <DynamicInput invoice={uninvoicedInvoices} type="Uninvoiced" handleChange={this.handleChange} />
+                    <DynamicInput
+                        invoice={uninvoicedInvoices}
+                        type="Uninvoiced"
+                        keyValue="uninvoicedInvoices"
+                        handleChange={this.handleChange}
+                    />
                 </FormGroup>
 
                 <Button>Submit</Button>

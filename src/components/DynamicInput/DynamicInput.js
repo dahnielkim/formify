@@ -12,6 +12,7 @@ const DynamicInput = props => {
                 <Label for={invoiceId}>{`${props.type} Invoice #${idx + 1}`} Description</Label>
                 <Input
                     type="text"
+                    data-type={props.keyValue}
                     name={invoiceId}
                     data-id={idx}
                     id={invoiceId}
@@ -23,6 +24,7 @@ const DynamicInput = props => {
                 <Label for={amountid}>Amount</Label>
                 <Input
                     type="number"
+                    data-type={props.keyValue}
                     step="0.01"
                     name={amountid}
                     data-id={idx}
@@ -35,6 +37,7 @@ const DynamicInput = props => {
                 <Label for={amountid}>Period</Label>
                 <Input
                     type="text"
+                    data-type={props.keyValue}
                     name={periodId}
                     data-id={idx}
                     id={periodId}

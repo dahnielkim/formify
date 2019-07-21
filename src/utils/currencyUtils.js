@@ -4,9 +4,7 @@
  * @returns {Float}
  */
 export function roundCurrency(amount) {
-    const isNumber = typeof amount === 'number';
-
-    if (isNumber) {
+    if (typeof amount === 'number') {
         return Math.round(amount * 100) / 100;
     }
 
