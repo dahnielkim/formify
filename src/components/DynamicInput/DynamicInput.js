@@ -14,6 +14,7 @@ const DynamicInput = props => {
           name={invoiceId}
           data-id={idx}
           id={invoiceId}
+          onChange={props.handleChange}
           value={props.invoice[idx].description}
           className="description"
         />
@@ -24,6 +25,7 @@ const DynamicInput = props => {
           name={amountid}
           data-id={idx}
           id={amountid}
+          onChange={props.handleChange}
           value={props.invoice[idx].amount}
           className="amount"
         />
@@ -34,6 +36,7 @@ const DynamicInput = props => {
           name={periodId}
           data-id={idx}
           id={periodId}
+          onChange={props.handleChange}
           value={props.invoice[idx].period}
           className="period"
         />
