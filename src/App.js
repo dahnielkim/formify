@@ -139,7 +139,9 @@ class App extends Component {
                         </Table>
                     </FormGroup>
 
-                    <Button onClick={this.handleSubmit}>Submit</Button>
+                    <Button color="primary" size="lg" block onClick={this.handleSubmit}>
+                        Submit
+                    </Button>
                 </Form>
             </Container>
         );
