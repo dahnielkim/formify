@@ -40,6 +40,7 @@ class App extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     fetch("/api/email", {
         method: 'POST',
         credentials: 'same-origin',
@@ -47,7 +48,7 @@ class App extends React.Component {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({this.state})
+        body: JSON.stringify(this.state)
     })
   };
 
