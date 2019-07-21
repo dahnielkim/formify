@@ -58,8 +58,6 @@ class App extends Component {
     };
 
     render() {
-        const { vendor_name, unpaidInvoices, email, uninvoicedInvoices } = this.state;
-
         return (
             <Container className="vcf-container">
                 <Form>
@@ -72,7 +70,7 @@ class App extends Component {
                                 type="text"
                                 name="vendor_name"
                                 id="vcf-vendor_name"
-                                value={vendor_name}
+                                value={this.state.vendor_name}
                                 onChange={this.handleChange}
                             />
                         </Col>
@@ -88,7 +86,7 @@ class App extends Component {
                                 name="email"
                                 id="vcf-email"
                                 onChange={this.handleChange}
-                                value={email}
+                                value={this.state.email}
                             />
                         </Col>
                     </FormGroup>
@@ -109,7 +107,7 @@ class App extends Component {
                                 </tr>
                             </thead>
                             <DynamicInput
-                                invoice={unpaidInvoices}
+                                invoice={this.state.unpaidInvoices}
                                 type="Unpaid"
                                 keyValue="unpaidInvoices"
                                 handleChange={this.handleChange}
@@ -133,7 +131,7 @@ class App extends Component {
                                 </tr>
                             </thead>
                             <DynamicInput
-                                invoice={uninvoicedInvoices}
+                                invoice={this.state.uninvoicedInvoices}
                                 type="Uninvoiced"
                                 keyValue="uninvoicedInvoices"
                                 handleChange={this.handleChange}
