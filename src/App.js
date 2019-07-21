@@ -1,6 +1,6 @@
 import React from 'react';
 import DynamicInput from './components/DynamicInput';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Col, Table, Container } from 'reactstrap';
 import { roundCurrency } from './utils/currencyUtils';
 
 class App extends React.Component {
@@ -60,57 +60,91 @@ class App extends React.Component {
         const { vendor_name, unpaidInvoices, email, uninvoicedInvoices } = this.state;
 
         return (
-            <Form>
-                <FormGroup>
-                    <Label for="vcf-vendor_name">Vendor Name</Label>
-                    <Input
-                        type="text"
-                        name="vendor_name"
-                        id="vcf-vendor_name"
-                        value={vendor_name}
-                        onChange={this.handleChange}
-                        placeholder="password placeholder"
-                    />
-                </FormGroup>
+            <Container>
+                <Form>
+                    <FormGroup row>
+                        <Label for="vcf-vendor_name" sm={2}>
+                            Vendor Name
+                        </Label>
+                        <Col sm={10}>
+                            <Input
+                                type="text"
+                                name="vendor_name"
+                                id="vcf-vendor_name"
+                                value={vendor_name}
+                                onChange={this.handleChange}
+                                placeholder="password placeholder"
+                            />
+                        </Col>
+                    </FormGroup>
 
-                <FormGroup>
-                    <Label for="vcf-email">Email</Label>
-                    <Input
-                        type="email"
-                        name="email"
-                        id="vcf-email"
-                        onChange={this.handleChange}
-                        placeholder="JohnSmith@sample.com"
-                        value={email}
-                    />
-                </FormGroup>
+                    <FormGroup row>
+                        <Label for="vcf-email" sm={2}>
+                            Email
+                        </Label>
+                        <Col sm={10}>
+                            <Input
+                                type="email"
+                                name="email"
+                                id="vcf-email"
+                                onChange={this.handleChange}
+                                placeholder="JohnSmith@sample.com"
+                                value={email}
+                            />
+                        </Col>
+                    </FormGroup>
 
-                <FormGroup>
-                    <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
-                        Add Unpaid Invoices
-                    </Button>
-                    <DynamicInput
-                        invoice={unpaidInvoices}
-                        type="Unpaid"
-                        keyValue="unpaidInvoices"
-                        handleChange={this.handleChange}
-                    />
-                </FormGroup>
+                    <FormGroup>
+                        <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
+                            Add Unpaid Invoices
+                        </Button>
+                    </FormGroup>
 
-                <FormGroup>
-                    <Button color="primary" onClick={() => this.addInvoice('uninvoiced')}>
-                        Add Uninvoiced Invoices
-                    </Button>
-                    <DynamicInput
-                        invoice={uninvoicedInvoices}
-                        type="Uninvoiced"
-                        keyValue="uninvoicedInvoices"
-                        handleChange={this.handleChange}
-                    />
-                </FormGroup>
+                    <FormGroup>
+                        <Table responsive>
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Amount ($)</th>
+                                    <th>Period</th>
+                                </tr>
+                            </thead>
+                            <DynamicInput
+                                invoice={unpaidInvoices}
+                                type="Unpaid"
+                                keyValue="unpaidInvoices"
+                                handleChange={this.handleChange}
+                            />
+                        </Table>
+                    </FormGroup>
 
-                <Button onClick={this.handleSubmit}>Submit</Button>
-            </Form>
+                    <FormGroup>
+                        <Button color="primary" onClick={() => this.addInvoice('uninvoiced')}>
+                            Add Uninvoiced Invoices
+                        </Button>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Table responsive>
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Amount ($)</th>
+                                    <th>Period</th>
+                                </tr>
+                            </thead>
+                            <DynamicInput
+                                invoice={uninvoicedInvoices}
+                                type="Uninvoiced"
+                                keyValue="uninvoicedInvoices"
+                                handleChange={this.handleChange}
+                            />
+                        </Table>
+                    </FormGroup>
+
+                    <Button onClick={this.handleSubmit}>Submit</Button>
+                </Form>
+            </Container>
         );
     }
 }

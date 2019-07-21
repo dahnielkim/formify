@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label, Input } from 'reactstrap';
+import { Input } from 'reactstrap';
 
 const DynamicInput = props => {
     return props.invoice.map((val, idx) => {
@@ -8,44 +8,49 @@ const DynamicInput = props => {
         const periodId = `period-${idx}`;
 
         return (
-            <div key={idx}>
-                <Label for={invoiceId}>{`${props.type} Invoice #${idx + 1}`} Description</Label>
-                <Input
-                    type="text"
-                    data-type={props.keyValue}
-                    name={invoiceId}
-                    data-id={idx}
-                    id={invoiceId}
-                    onChange={props.handleChange}
-                    value={props.invoice[idx].description}
-                    className="description"
-                />
+            <tbody key={idx}>
+                <tr>
+                    <td>
+                        <Input
+                            type="text"
+                            data-type={props.keyValue}
+                            name={invoiceId}
+                            data-id={idx}
+                            id={invoiceId}
+                            onChange={props.handleChange}
+                            value={props.invoice[idx].description}
+                            className="description"
+                        />
+                    </td>
 
-                <Label for={amountid}>Amount</Label>
-                <Input
-                    type="number"
-                    data-type={props.keyValue}
-                    step="0.01"
-                    name={amountid}
-                    data-id={idx}
-                    id={amountid}
-                    onChange={props.handleChange}
-                    value={props.invoice[idx].amount}
-                    className="amount"
-                />
+                    <td>
+                        <Input
+                            type="number"
+                            data-type={props.keyValue}
+                            step="0.01"
+                            name={amountid}
+                            data-id={idx}
+                            id={amountid}
+                            onChange={props.handleChange}
+                            value={props.invoice[idx].amount}
+                            className="amount"
+                        />
+                    </td>
 
-                <Label for={amountid}>Period</Label>
-                <Input
-                    type="text"
-                    data-type={props.keyValue}
-                    name={periodId}
-                    data-id={idx}
-                    id={periodId}
-                    onChange={props.handleChange}
-                    value={props.invoice[idx].period}
-                    className="period"
-                />
-            </div>
+                    <td>
+                        <Input
+                            type="text"
+                            data-type={props.keyValue}
+                            name={periodId}
+                            data-id={idx}
+                            id={periodId}
+                            onChange={props.handleChange}
+                            value={props.invoice[idx].period}
+                            className="period"
+                        />
+                    </td>
+                </tr>
+            </tbody>
         );
     });
 };
