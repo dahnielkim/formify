@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 
+//'smtps://[email_address]%40gmail.com:[password]@smtp.gmail.com'
 var transporter = nodemailer.createTransport('smtps://mlaw8788%40gmail.com:tbone2888@smtp.gmail.com');
 
 module.exports = {
@@ -9,10 +10,12 @@ module.exports = {
 
         var mailOptions = {
         from: '"mlaw" <mlaw8788@gmail.com>',
-        to: 'thtang28@gmail.com',
+        to: '', //email to send to
         subject: `Test Subject`,
         text: `test`
       };
+
+      //uncomment to send email
 
       // transporter.sendMail(mailOptions, function(error, info){
       //   if (error) {
@@ -21,6 +24,8 @@ module.exports = {
       //     console.log('Email sent: ' + info.response);
       //   }
       // });
+
+
       // res.send(data)
     }
 }
