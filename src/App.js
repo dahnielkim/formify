@@ -21,14 +21,11 @@ class App extends Component {
         if (['description', 'amount', 'period'].includes(className)) {
             let invoices = [...this.state[evt.target.dataset.type]];
 
-            invoices[evt.target.dataset.id][className] =
-                className !== 'description'
-                    ? roundCurrency(evt.target.value)
-                    : evt.target.value;
+            invoices[evt.target.dataset.id][className] = className !== 'description' ? roundCurrency(evt.target.value) : evt.target.value;
 
             this.setState({ [evt.target.dataset.type]: invoices });
         } else {
-            this.setState({ [evt.target.name]: evt.target.value.toUpperCase() });
+            this.setState({ [evt.target.name]: evt.target.value });
         }
 
         console.log('Current State: ', this.state);
@@ -37,17 +34,11 @@ class App extends Component {
     addInvoice = type => {
         if (type === 'unpaid') {
             this.setState(prevState => ({
-                unpaidInvoices: [
-                    ...prevState.unpaidInvoices,
-                    { description: '', amount: 0, period: '' },
-                ],
+                unpaidInvoices: [...prevState.unpaidInvoices, { description: '', amount: 0, period: '' }],
             }));
         } else {
             this.setState(prevState => ({
-                uninvoicedInvoices: [
-                    ...prevState.uninvoicedInvoices,
-                    { description: '', amount: 0, period: '' },
-                ],
+                uninvoicedInvoices: [...prevState.uninvoicedInvoices, { description: '', amount: 0, period: '' }],
             }));
         }
     };
@@ -84,13 +75,7 @@ class App extends Component {
                             Vendor Name
                         </Label>
                         <Col sm={10}>
-                            <Input
-                                type="text"
-                                name="vendor_name"
-                                id="vcf-vendor_name"
-                                value={this.state.vendor_name}
-                                onChange={this.handleChange}
-                            />
+                            <Input type="text" name="vendor_name" id="vcf-vendor_name" value={this.state.vendor_name} onChange={this.handleChange} />
                         </Col>
                     </FormGroup>
 
@@ -99,22 +84,13 @@ class App extends Component {
                             Email
                         </Label>
                         <Col sm={10}>
-                            <Input
-                                type="email"
-                                name="email"
-                                id="vcf-email"
-                                onChange={this.handleChange}
-                                value={this.state.email}
-                            />
+                            <Input type="email" name="email" id="vcf-email" onChange={this.handleChange} value={this.state.email} />
                         </Col>
                     </FormGroup>
 
                     <FormGroup>
                         <Col sm="12" md={{ size: 3, offset: 5 }}>
-                            <Button
-                                color="primary"
-                                onClick={() => this.addInvoice('unpaid')}
-                            >
+                            <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
                                 Add Unpaid Invoices
                             </Button>
                         </Col>
@@ -135,10 +111,7 @@ class App extends Component {
 
                     <FormGroup>
                         <Col sm="12" md={{ size: 3, offset: 5 }}>
-                            <Button
-                                color="primary"
-                                onClick={() => this.addInvoice('uninvoiced')}
-                            >
+                            <Button color="primary" onClick={() => this.addInvoice('uninvoiced')}>
                                 Add Uninvoiced Invoices
                             </Button>
                         </Col>

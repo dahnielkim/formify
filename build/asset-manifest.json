@@ -1,17 +1,6 @@
 {
-  "files": {
-    "main.css": "/vendor-confirm-form/static/css/main.b235a556.chunk.css",
-    "main.js": "/vendor-confirm-form/static/js/main.ef4d5948.chunk.js",
-    "main.js.map": "/vendor-confirm-form/static/js/main.ef4d5948.chunk.js.map",
-    "runtime~main.js": "/vendor-confirm-form/static/js/runtime~main.1df5beb9.js",
-    "runtime~main.js.map": "/vendor-confirm-form/static/js/runtime~main.1df5beb9.js.map",
-    "static/css/2.266e55a5.chunk.css": "/vendor-confirm-form/static/css/2.266e55a5.chunk.css",
-    "static/js/2.9f1d6d09.chunk.js": "/vendor-confirm-form/static/js/2.9f1d6d09.chunk.js",
-    "static/js/2.9f1d6d09.chunk.js.map": "/vendor-confirm-form/static/js/2.9f1d6d09.chunk.js.map",
-    "index.html": "/vendor-confirm-form/index.html",
-    "precache-manifest.ec4465181c5d2d6a606ea1e1775119c2.js": "/vendor-confirm-form/precache-manifest.ec4465181c5d2d6a606ea1e1775119c2.js",
-    "service-worker.js": "/vendor-confirm-form/service-worker.js",
-    "static/css/2.266e55a5.chunk.css.map": "/vendor-confirm-form/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.b235a556.chunk.css.map": "/vendor-confirm-form/static/css/main.b235a556.chunk.css.map"
-  }
+  "main.css": "static/css/main.b3054a8c.css",
+  "main.css.map": "static/css/main.b3054a8c.css.map",
+  "main.js": "static/js/main.db6d5cf1.js",
+  "main.js.map": "static/js/main.db6d5cf1.js.map"
 }
