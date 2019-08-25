@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TableHeader from './components/TableHeader';
 import TableBody from './components/TableBody';
-import { Button, Form, FormGroup, Label, Input, Col, Table, Container } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Col, Table, Container, Card } from 'reactstrap';
 import { roundCurrency } from './utils/currencyUtils';
 import './App.css';
 
@@ -93,47 +93,51 @@ class App extends Component {
                         </Col>
                     </FormGroup>
 
-                    <FormGroup>
-                        <Col sm="12" md={{ size: 3, offset: 5 }}>
-                            <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
-                                Add Unpaid Invoices
-                            </Button>
-                        </Col>
-                    </FormGroup>
+                    <Card className="vcf-form-container">
+                        <FormGroup>
+                            <Col sm="12" md={{ size: 3, offset: 5 }}>
+                                <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
+                                    Add Unpaid Invoices
+                                </Button>
+                            </Col>
+                        </FormGroup>
 
-                    <FormGroup>
-                        <Table responsive>
-                            <TableHeader headerLabels={this._invoiceHeaders} />
-                            <TableBody
-                                data={this.state.unpaidInvoices}
-                                typeAbbrev="Unpaid"
-                                typeLong="unpaidInvoices"
-                                fn={this.handleChange}
-                                deleteFn={this.removeInvoice}
-                            />
-                        </Table>
-                    </FormGroup>
+                        <FormGroup>
+                            <Table responsive>
+                                <TableHeader headerLabels={this._invoiceHeaders} />
+                                <TableBody
+                                    data={this.state.unpaidInvoices}
+                                    typeAbbrev="Unpaid"
+                                    typeLong="unpaidInvoices"
+                                    fn={this.handleChange}
+                                    deleteFn={this.removeInvoice}
+                                />
+                            </Table>
+                        </FormGroup>
+                    </Card>
 
-                    <FormGroup>
-                        <Col sm="12" md={{ size: 3, offset: 5 }}>
-                            <Button color="primary" onClick={() => this.addInvoice('uninvoiced')}>
-                                Add Uninvoiced Invoices
-                            </Button>
-                        </Col>
-                    </FormGroup>
+                    <Card className="vcf-form-container">
+                        <FormGroup>
+                            <Col sm="12" md={{ size: 3, offset: 5 }}>
+                                <Button color="primary" onClick={() => this.addInvoice('uninvoiced')}>
+                                    Add Uninvoiced Invoices
+                                </Button>
+                            </Col>
+                        </FormGroup>
 
-                    <FormGroup>
-                        <Table responsive>
-                            <TableHeader headerLabels={this._invoiceHeaders} />
-                            <TableBody
-                                data={this.state.uninvoicedInvoices}
-                                typeAbbrev="Uninvoiced"
-                                typeLong="uninvoicedInvoices"
-                                fn={this.handleChange}
-                                deleteFn={this.removeInvoice}
-                            />
-                        </Table>
-                    </FormGroup>
+                        <FormGroup>
+                            <Table responsive>
+                                <TableHeader headerLabels={this._invoiceHeaders} />
+                                <TableBody
+                                    data={this.state.uninvoicedInvoices}
+                                    typeAbbrev="Uninvoiced"
+                                    typeLong="uninvoicedInvoices"
+                                    fn={this.handleChange}
+                                    deleteFn={this.removeInvoice}
+                                />
+                            </Table>
+                        </FormGroup>
+                    </Card>
 
                     <Button color="primary" size="lg" block onClick={this.handleSubmit}>
                         Submit

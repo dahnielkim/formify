@@ -1,3 +1,9 @@
 .vcf-container {
     margin-top: 1rem;
 }
+
+.vcf-form-container {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    margin-bottom: 2rem;
+}
