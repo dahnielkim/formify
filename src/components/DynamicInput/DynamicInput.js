@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button } from 'reactstrap';
+import { Input, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 import { MdDelete } from 'react-icons/md';
 
 const DynamicInput = props => {
@@ -25,17 +25,22 @@ const DynamicInput = props => {
                     </td>
 
                     <td>
-                        <Input
-                            type="number"
-                            data-type={props.keyValue}
-                            step="0.01"
-                            name={amountid}
-                            data-id={idx}
-                            id={amountid}
-                            onChange={props.handleChange}
-                            value={props.invoice[idx].amount.toString().replace(/^0+/, '')}
-                            className="amount"
-                        />
+                        <InputGroup>
+                            <InputGroupAddon addonType="prepend">
+                                <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <Input
+                                type="number"
+                                data-type={props.keyValue}
+                                step="0.01"
+                                name={amountid}
+                                data-id={idx}
+                                id={amountid}
+                                onChange={props.handleChange}
+                                value={props.invoice[idx].amount.toString().replace(/^0+/, '')}
+                                className="amount"
+                            />
+                        </InputGroup>
                     </td>
 
                     <td>
