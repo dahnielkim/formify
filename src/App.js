@@ -39,11 +39,11 @@ class App extends Component {
     addInvoice = type => {
         if (type === 'unpaid') {
             this.setState(prevState => ({
-                unpaidInvoices: [...prevState.unpaidInvoices, { description: '', amount: 0, period: '' }],
+                unpaidInvoices: [...prevState.unpaidInvoices, { description: '', amount: 0, period: this._initialPeriod }],
             }));
         } else {
             this.setState(prevState => ({
-                uninvoicedInvoices: [...prevState.uninvoicedInvoices, { description: '', amount: 0, period: '' }],
+                uninvoicedInvoices: [...prevState.uninvoicedInvoices, { description: '', amount: 0, period: this._initialPeriod }],
             }));
         }
     };
