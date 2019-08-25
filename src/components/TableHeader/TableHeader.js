@@ -4,9 +4,10 @@ const TableHeader = props => (
     <thead>
         <tr>
             {props.headerLabels.map(headerLabel => (
-                <th>{headerLabel}</th>
+                <th key={headerLabel}>{headerLabel}</th>
             ))}
         </tr>
     </thead>
 );
+
 export default TableHeader;

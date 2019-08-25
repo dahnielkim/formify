@@ -3,7 +3,7 @@ const options = {
     singleQuote: true,
     tabWidth: 4,
     trailingComma: 'all',
-    printWidth: 150,
+    printWidth: 120,
 };
 
 module.exports = options;
