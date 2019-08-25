@@ -4,9 +4,9 @@ import { MdDelete } from 'react-icons/md';
 
 const DynamicInput = props => {
     return props.invoice.map((val, idx) => {
-        const invoiceId = `invoice-${idx}`;
-        const amountid = `amount-${idx}`;
-        const periodId = `period-${idx}`;
+        const invoiceId = 'invoice-' + idx;
+        const amountid = 'amount-' + idx;
+        const periodId = 'period-' + idx;
 
         return (
             <tbody key={idx}>
@@ -52,12 +52,7 @@ const DynamicInput = props => {
                     </td>
 
                     <td>
-                        <Button
-                            data-type={props.keyValue}
-                            color="danger"
-                            size="sm"
-                            onClick={() => props.handleRemove(props.keyValue, idx)}
-                        >
+                        <Button data-type={props.keyValue} color="danger" size="sm" onClick={() => props.handleRemove(props.keyValue, idx)}>
                             <MdDelete />
                         </Button>
                     </td>
