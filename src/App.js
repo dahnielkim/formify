@@ -6,10 +6,14 @@ import { roundCurrency } from './utils/currencyUtils';
 import './App.css';
 
 class App extends Component {
+    /* private variables */
     _invoiceHeaders = ['Description', 'Amount ($)', 'Period', 'Delete'];
+    _initialPeriod = new Date().getFullYear() + '-01';
+
+    /* state */
     state = {
-        unpaidInvoices: [{ description: '', amount: 0, period: '' }],
-        uninvoicedInvoices: [{ description: '', amount: 0, period: '' }],
+        unpaidInvoices: [{ description: '', amount: 0, period: this._initialPeriod }],
+        uninvoicedInvoices: [{ description: '', amount: 0, period: this._initialPeriod }],
         vendor_name: '',
         description: '',
         email: '',
@@ -21,7 +25,8 @@ class App extends Component {
         if (['description', 'amount', 'period'].includes(className)) {
             let invoices = [...this.state[evt.target.dataset.type]];
 
-            invoices[evt.target.dataset.id][className] = className !== 'description' ? roundCurrency(evt.target.value) : evt.target.value;
+            invoices[evt.target.dataset.id][className] =
+                className !== 'description' && className !== 'period' ? roundCurrency(evt.target.value) : evt.target.value;
 
             this.setState({ [evt.target.dataset.type]: invoices });
         } else {

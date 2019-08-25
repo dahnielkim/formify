@@ -45,7 +45,7 @@ const DynamicInput = props => {
 
                     <td>
                         <Input
-                            type="text"
+                            type="month"
                             data-type={props.keyValue}
                             name={periodId}
                             data-id={idx}
