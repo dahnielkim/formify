@@ -33,7 +33,7 @@ const DynamicInput = props => {
                             data-id={idx}
                             id={amountid}
                             onChange={props.handleChange}
-                            value={props.invoice[idx].amount}
+                            value={props.invoice[idx].amount.toString().replace(/^0+/, '')}
                             className="amount"
                         />
                     </td>
