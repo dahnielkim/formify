@@ -8,11 +8,11 @@ const EmailController = require('./controllers/email_controller');
 const isDev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 5000;
 
-// Multi-process to utilize all CPU cores.
+// multi-process to utilize all CPU cores
 if (!isDev && cluster.isMaster) {
     console.error(`Node cluster master ${process.pid} is running`);
 
-    // Fork workers.
+    // fork workers
     for (let i = 0; i < numCPUs; i++) {
         cluster.fork();
     }
