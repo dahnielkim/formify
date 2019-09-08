@@ -1,7 +1,0 @@
-[build]
-  # runs site build
-  command = "npm run build"
-  # publish to netlify's command
-  publish = "build"
-  # functions build directory
-  functions = "functions-build"
