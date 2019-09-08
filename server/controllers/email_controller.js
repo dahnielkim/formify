@@ -40,7 +40,7 @@ module.exports = {
 
         var mailOptions = {
             from: '"mlaw" <mlaw8788@gmail.com>',
-            to: 'jctestinbox@gmail.com', //email to send to
+            to: 'dahnielkim@gmail.com', //email to send to
             subject: `Test Subject`,
             text: `test`,
         };
