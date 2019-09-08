@@ -29,6 +29,13 @@ if (!isDev && cluster.isMaster) {
     app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
     app.use((err, req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+        res.header(
+            'Access-Control-Allow-Headers',
+            'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials',
+        );
+        res.header('Access-Control-Allow-Credentials', 'true');
         res.status(422).send({ errors: err.message });
     });
 
