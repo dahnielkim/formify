@@ -27,7 +27,6 @@ if (!isDev && cluster.isMaster) {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.text());
     app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
-
     app.use((err, req, res, next) => {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
