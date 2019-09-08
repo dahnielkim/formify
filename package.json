@@ -45,6 +45,5 @@
         "heroku",
         "create-react-app",
         "react"
-    ],
-    "license": "ISC"
+    ]
 }
