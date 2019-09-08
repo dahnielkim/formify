@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(express.static('client/build'));
 
 app.get('/', (req, res) => res.send('Hello World!'));
 app.post('/api/email', EmailController.sendEmail);
