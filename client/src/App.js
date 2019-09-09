@@ -3,6 +3,7 @@ import TableHeader from './components/TableHeader';
 import TableBody from './components/TableBody';
 import { Button, Form, FormGroup, Label, Input, Col, Table, Container, Card } from 'reactstrap';
 import { roundCurrency } from './utils/currencyUtils';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
@@ -71,6 +72,10 @@ class App extends Component {
         });
 
         console.log('state at submit: ', this.state);
+
+        axios.post('/api/email', this.state).then(resp => {
+            console.log(resp, 'response');
+        });
     };
 
     removeInvoice = (key, idx) => {
