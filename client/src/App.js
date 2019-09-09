@@ -75,16 +75,6 @@ class App extends Component {
             .catch(err => {
                 console.log('error', err);
             });
-
-        // fetch('/api/email', {
-        //     method: 'POST',
-        //     credentials: 'same-origin',
-        //     headers: {
-        //         Accept: 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({ ...this.state, ...vars }),
-        // });
     };
 
     removeInvoice = (key, idx) => {
