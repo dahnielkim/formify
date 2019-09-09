@@ -1,13 +1,13 @@
 const nodemailer = require('nodemailer');
-const SMTPSetup = {
-    sender: 'VCF',
-    email: 'mlaw8788@gmail.com',
-    password: 'tbone2888',
-};
-var SMPTConfigObj = {
+const SMPTConfigObj = {
+    host: 'smtp.gmail.com',
+    port: 465,
     auth: {
-        user: SMTPSetup.email,
-        pass: SMTPSetup.password,
+        user: 'mlaw8788@gmail.com',
+        pass: 'tbone2888',
+    },
+    tls: {
+        rejectUnauthorized: false,
     },
     service: 'gmail',
 };
