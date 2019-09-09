@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./router');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Serve up static assets
-app.use(express.static('client/build'));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Enable CORS from client-side
 app.use(function(req, res, next) {

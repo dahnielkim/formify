@@ -6,7 +6,7 @@
         "type": "git",
         "url": "https://github.com/dahnielkim/vcf-form.git"
     },
-    "main": "index.js",
+    "main": "server.js",
     "scripts": {
         "server": "node server.js",
         "client": "node scripts/start-client.js",
