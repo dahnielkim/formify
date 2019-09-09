@@ -25,3 +25,8 @@ For development, please perform the following steps.
 2. Run `yarn install` or `npm install` to install all node packages.
 3. Add a `.env` file with the following code inside of it: `SKIP_PREFLIGHT_CHECK=true`
 4. Run `yarn start` or `npm start`.
+
+#### Temp Development
+
+Test email address that will recieve the emails is `jctestinbox@gmail.com // vcftestpw`.
+Emails will be sent from `mlaw8788@gmail.com`.
