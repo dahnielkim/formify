@@ -67,7 +67,14 @@ class App extends Component {
             vars[key] = value;
         });
 
-        axios.post('/api/submit', { ...this.state, ...vars });
+        axios
+            .post('/api/submit', { ...this.state, ...vars })
+            .then(resp => {
+                console.log('response', resp);
+            })
+            .catch(err => {
+                console.log('error', err);
+            });
     };
 
     removeInvoice = (key, idx) => {
