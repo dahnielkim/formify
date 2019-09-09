@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const formRoutes = require('./form');
+const formController = require('../../controllers/form');
 
-router.use('/submit', formRoutes);
+// route for sending email
+router.route('/submit').post(formController.sendEmail);
 
 module.exports = router;

@@ -1,19 +1,11 @@
-const express = require('express');
-const path = require('path');
 const nodemailer = require('nodemailer');
 
-module.exports = function(app) {
-    const apiRoutes = express.Router();
-    const transporter = nodemailer.createTransport('smtps://mlaw8788%40gmail.com:tbone2888@smtp.gmail.com');
-
-    app.use('/api', apiRoutes);
-
-    // TODO: missing report name
-    apiRoutes.route('/submit').post(function(req, res) {
+module.exports = {
+    sendEmail: (req, res) => {
+        const transporter = nodemailer.createTransport('smtps://mlaw8788%40gmail.com:tbone2888@smtp.gmail.com');
+        // TODO: missing report name
         let emailBody = '';
-        req.data = '';
 
-        console.log(req.body.id, 'req');
         if (req.body.id) {
             for (let i = 0; i < req.body.unpaidInvoices.length; i++) {
                 emailBody += 'report_id|' + req.body.id + '|';
@@ -38,21 +30,18 @@ module.exports = function(app) {
             const mailOptions = {
                 from: 'mlaw8788@gmail.com',
                 to: 'jctestinbox@gmail.com',
-                subject: 'Data from ' + req.body.vendor_name + ' ' + req.body.email,
+                subject: req.body.id,
                 text: emailBody,
             };
 
             transporter.sendMail(mailOptions, function(error, info) {
                 if (error) {
-                    console.error(error);
+                    res.send(err);
                 } else {
                     console.log('Email sent: ' + info.response);
+                    res.json(info.response);
                 }
             });
         }
-    });
-
-    app.get('*', function(request, response) {
-        response.sendFile(path.join(__dirname, './client/build/index.html'));
-    });
+    },
 };

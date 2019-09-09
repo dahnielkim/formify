@@ -1,7 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const router = require('./router');
-const path = require('path');
 const config = require('./config/main.js');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -10,11 +8,13 @@ const routes = require('./routes');
 const app = express();
 
 // Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 // Serve up static assets
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static('client/build'));
 
 // Enable CORS from client-side
 app.use(function(req, res, next) {
