@@ -4,7 +4,7 @@ const SMPTConfigObj = {
     port: 465,
     auth: {
         user: 'mlaw8788@gmail.com',
-        pass: 'tbone2888',
+        pass: 'tbone2888EfA+!a',
     },
     tls: {
         rejectUnauthorized: false,
