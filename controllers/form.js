@@ -14,7 +14,6 @@ const SMPTConfigObj = {
 
 module.exports = {
     sendEmail: (req, res) => {
-        // const transporter = nodemailer.createTransport('smtps://mlaw8788%40gmail.com:tbone2888@smtp.gmail.com');
         const transporter = nodemailer.createTransport(SMPTConfigObj);
 
         // TODO: missing report name
