@@ -26,7 +26,9 @@ class App extends Component {
             let invoices = [...this.state[evt.target.dataset.type]];
 
             invoices[evt.target.dataset.id][className] =
-                className !== 'description' && className !== 'period' ? roundCurrency(evt.target.value) : evt.target.value;
+                className !== 'description' && className !== 'period'
+                    ? roundCurrency(evt.target.value)
+                    : evt.target.value;
 
             this.setState({ [evt.target.dataset.type]: invoices });
         } else {
@@ -39,11 +41,17 @@ class App extends Component {
     addInvoice = type => {
         if (type === 'unpaid') {
             this.setState(prevState => ({
-                unpaidInvoices: [...prevState.unpaidInvoices, { description: '', amount: 0, period: this._initialPeriod }],
+                unpaidInvoices: [
+                    ...prevState.unpaidInvoices,
+                    { description: '', amount: 0, period: this._initialPeriod },
+                ],
             }));
         } else {
             this.setState(prevState => ({
-                uninvoicedInvoices: [...prevState.uninvoicedInvoices, { description: '', amount: 0, period: this._initialPeriod }],
+                uninvoicedInvoices: [
+                    ...prevState.uninvoicedInvoices,
+                    { description: '', amount: 0, period: this._initialPeriod },
+                ],
             }));
         }
     };
@@ -80,7 +88,13 @@ class App extends Component {
                             Vendor Name
                         </Label>
                         <Col sm={10}>
-                            <Input type="text" name="vendor_name" id="vcf-vendor_name" value={this.state.vendor_name} onChange={this.handleChange} />
+                            <Input
+                                type="text"
+                                name="vendor_name"
+                                id="vcf-vendor_name"
+                                value={this.state.vendor_name}
+                                onChange={this.handleChange}
+                            />
                         </Col>
                     </FormGroup>
 
@@ -89,7 +103,13 @@ class App extends Component {
                             Email
                         </Label>
                         <Col sm={10}>
-                            <Input type="email" name="email" id="vcf-email" onChange={this.handleChange} value={this.state.email} />
+                            <Input
+                                type="email"
+                                name="email"
+                                id="vcf-email"
+                                onChange={this.handleChange}
+                                value={this.state.email}
+                            />
                         </Col>
                     </FormGroup>
 
