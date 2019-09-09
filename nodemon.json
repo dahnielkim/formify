@@ -1,6 +1,5 @@
 {
-    "ignore": [
-      "client/*"
-    ]
-  }
-  
+  "ignore": [
+    "client/*"
+  ]
+}

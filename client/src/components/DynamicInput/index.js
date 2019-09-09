@@ -1,1 +1,1 @@
-export { default } from "./DynamicInput";
+export { default } from './DynamicInput';

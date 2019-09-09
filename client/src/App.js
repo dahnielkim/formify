@@ -59,23 +59,10 @@ class App extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log('hit');
-
-        fetch('/api/email', {
-            method: 'POST',
-            credentials: 'same-origin',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(this.state),
-        });
 
         console.log('state at submit: ', this.state);
 
-        axios.post('/api/email', this.state).then(resp => {
-            console.log(resp, 'response');
-        });
+        axios.post('/api/submit', this.state);
     };
 
     removeInvoice = (key, idx) => {
