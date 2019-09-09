@@ -28,11 +28,10 @@ app.use(function(req, res, next) {
     next();
 });
 
-// app.use(cors());
-// app.use(morgan('dev'));
+app.use(cors());
+app.use(morgan('dev'));
 
-// app.use(routes);
-router(app);
+app.use(routes);
 
 // Start the API server
 app.listen(config.port, function() {
