@@ -67,24 +67,24 @@ class App extends Component {
             vars[key] = value;
         });
 
-        // axios
-        //     .post('/api/submit', { ...this.state, ...vars })
-        //     .then(resp => {
-        //         console.log('response', resp);
-        //     })
-        //     .catch(err => {
-        //         console.log('error', err);
-        //     });
+        axios
+            .post('/api/submit', { ...this.state, ...vars })
+            .then(resp => {
+                console.log('response', resp);
+            })
+            .catch(err => {
+                console.log('error', err);
+            });
 
-        fetch('/api/email', {
-            method: 'POST',
-            credentials: 'same-origin',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ ...this.state, ...vars }),
-        });
+        // fetch('/api/email', {
+        //     method: 'POST',
+        //     credentials: 'same-origin',
+        //     headers: {
+        //         Accept: 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({ ...this.state, ...vars }),
+        // });
     };
 
     removeInvoice = (key, idx) => {
