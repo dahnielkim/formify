@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "private": true,
     "license": "ISC",
-    "proxy": "http://localhost:3001/",
+    "proxy": "http://localhost:3030/",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",

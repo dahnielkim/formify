@@ -11,8 +11,9 @@ module.exports = function(app) {
     // TODO: missing report name
     apiRoutes.route('/submit').post(function(req, res) {
         let emailBody = '';
-        console.log(req.body, 'req body');
+        req.data = '';
 
+        console.log(req.body.id, 'req');
         if (req.body.id) {
             for (let i = 0; i < req.body.unpaidInvoices.length; i++) {
                 emailBody += 'report_id|' + req.body.id + '|';
