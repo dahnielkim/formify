@@ -1,7 +1,14 @@
 const nodemailer = require('nodemailer');
 
 //'smtps://[email_address]%40gmail.com:[password]@smtp.gmail.com'
-let transporter = nodemailer.createTransport('smtps://mlaw8788%40gmail.com:tbone2888@smtp.gmail.com');
+// let transporter = nodemailer.createTransport('smtps://mlaw8788%40gmail.com:tbone2888@smtp.gmail.com');
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'assignkick.qwad@gmail.com',
+        pass: 'assignkick',
+    },
+});
 
 function parseData(_data) {
     let arrCsv = [];
