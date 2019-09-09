@@ -1,6 +1,4 @@
 $(document).ready(
-  // Functionality for the carousel
-  () => {
-
-  }
+    // Functionality for the carousel
+    () => {},
 );
