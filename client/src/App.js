@@ -13,8 +13,8 @@ class App extends Component {
 
     /* state */
     state = {
-        unpaidInvoices: [{ description: '', amount: 0, period: this._initialPeriod }],
-        uninvoicedInvoices: [{ description: '', amount: 0, period: this._initialPeriod }],
+        unpaidInvoices: [{ description: '', amount: '', period: this._initialPeriod }],
+        uninvoicedInvoices: [{ description: '', amount: '', period: this._initialPeriod }],
         vendor_name: '',
         description: '',
         email: '',
@@ -44,14 +44,14 @@ class App extends Component {
             this.setState(prevState => ({
                 unpaidInvoices: [
                     ...prevState.unpaidInvoices,
-                    { description: '', amount: 0, period: this._initialPeriod },
+                    { description: '', amount: '', period: this._initialPeriod },
                 ],
             }));
         } else {
             this.setState(prevState => ({
                 uninvoicedInvoices: [
                     ...prevState.uninvoicedInvoices,
-                    { description: '', amount: 0, period: this._initialPeriod },
+                    { description: '', amount: '', period: this._initialPeriod },
                 ],
             }));
         }
@@ -60,9 +60,14 @@ class App extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        console.log('state at submit: ', this.state);
+        let vars = {};
 
-        axios.post('/api/submit', this.state);
+        // eslint-disable-next-line no-unused-vars
+        const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+            vars[key] = value;
+        });
+
+        axios.post('/api/submit', { ...this.state, ...vars });
     };
 
     removeInvoice = (key, idx) => {
