@@ -17,8 +17,8 @@ module.exports = {
         const transporter = nodemailer.createTransport(SMPTConfigObj);
 
         // TODO: missing report name
-        const emailBodyHeader = 'Report ID|Vendor Name|Vendor Email|Type|Description|Invoice Amount|Period\n';
-        let emailBody = emailBodyHeader;
+        // const emailBodyHeader = 'Report ID|Vendor Name|Vendor Email|Type|Description|Invoice Amount|Period\n';
+        let emailBody = '';
 
         if (req.body.id) {
             for (let i = 0; i < req.body.unpaidInvoices.length; i++) {
