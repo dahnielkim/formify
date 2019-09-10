@@ -1,6 +1,7 @@
 {
     "name": "vcf-form",
     "version": "0.0.1",
+    "author": "716",
     "license": "ISC",
     "repository": {
         "type": "git",
