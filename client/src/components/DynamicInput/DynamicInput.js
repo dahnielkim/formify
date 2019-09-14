@@ -1,6 +1,7 @@
 import React from 'react';
-import { Input, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
-import { MdDelete } from 'react-icons/md';
+import DeleteIcon from '@material-ui/icons/Delete';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const DynamicInput = props => {
     return props.invoice.map((val, idx) => {
@@ -12,58 +13,70 @@ const DynamicInput = props => {
             <tbody key={idx}>
                 <tr>
                     <td>
-                        <Input
+                        <TextField
                             type="text"
-                            data-type={props.keyValue}
                             name={invoiceId}
-                            data-id={idx}
                             id={invoiceId}
                             onChange={props.handleChange}
-                            value={props.invoice[idx].description}
-                            className="description"
+                            inputProps={{
+                                name: 'description',
+                                value: props.invoice[idx].description,
+                                'data-id': idx,
+                                'data-type': props.keyValue,
+                            }}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
                         />
                     </td>
 
                     <td>
-                        <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                                <InputGroupText>$</InputGroupText>
-                            </InputGroupAddon>
-                            <Input
-                                type="number"
-                                data-type={props.keyValue}
-                                step="0.01"
-                                name={amountid}
-                                data-id={idx}
-                                id={amountid}
-                                onChange={props.handleChange}
-                                value={props.invoice[idx].amount.toString().replace(/^0+/, '') || ''}
-                                className="amount"
-                            />
-                        </InputGroup>
+                        <TextField
+                            type="month"
+                            name={periodId}
+                            id={periodId}
+                            onChange={props.handleChange}
+                            inputProps={{
+                                name: 'period',
+                                value: props.invoice[idx].period,
+                                'data-id': idx,
+                                'data-type': props.keyValue,
+                            }}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
                     </td>
 
                     <td>
-                        <Input
-                            type="month"
-                            data-type={props.keyValue}
-                            name={periodId}
-                            data-id={idx}
-                            id={periodId}
+                        <TextField
+                            type="number"
+                            name={amountid}
+                            id={amountid}
                             onChange={props.handleChange}
-                            value={props.invoice[idx].period}
-                            className="period"
+                            inputProps={{
+                                name: 'amount',
+                                value: props.invoice[idx].amount.toString().replace(/^0+/, '') || '',
+                                'data-id': idx,
+                                'data-type': props.keyValue,
+                                step: '0.01',
+                            }}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
                         />
                     </td>
 
                     <td>
                         <Button
+                            variant="contained"
                             data-type={props.keyValue}
-                            color="danger"
-                            size="sm"
+                            color="secondary"
                             onClick={() => props.handleRemove(props.keyValue, idx)}
+                            aria-label="add"
                         >
-                            <MdDelete />
+                            Delete
+                            <DeleteIcon />
                         </Button>
                     </td>
                 </tr>

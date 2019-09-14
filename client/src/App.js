@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import TableHeader from './components/TableHeader';
 import TableBody from './components/TableBody';
-import { Button, Form, FormGroup, Label, Input, Col, Table, Container, Card } from 'reactstrap';
+import { Button, Form, Label, Col, Table } from 'reactstrap';
+import TextField from '@material-ui/core/TextField';
 import { roundCurrency } from './utils/currencyUtils';
+import Container from '@material-ui/core/Container';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormCoreInput from './components/FormCoreInput';
 import axios from 'axios';
+import Grid from '@material-ui/core/Grid';
 import './App.css';
 
 class App extends Component {
-    /* private variables */
-    _invoiceHeaders = ['Description', 'Amount ($)', 'Period', 'Delete'];
+    _invoiceHeaders = ['Description', 'Period', 'Amount ($)', 'Delete'];
     _initialPeriod = new Date().getFullYear() + '-01';
 
-    /* state */
     state = {
         unpaidInvoices: [{ description: '', amount: '', period: this._initialPeriod }],
         uninvoicedInvoices: [{ description: '', amount: '', period: this._initialPeriod }],
@@ -21,13 +24,11 @@ class App extends Component {
     };
 
     handleChange = evt => {
-        const className = evt.target.className.replace(' form-control', '');
-
-        if (['description', 'amount', 'period'].includes(className)) {
+        if (['description', 'amount', 'period'].includes(evt.target.name)) {
             let invoices = [...this.state[evt.target.dataset.type]];
 
-            invoices[evt.target.dataset.id][className] =
-                className !== 'description' && className !== 'period'
+            invoices[evt.target.dataset.id][evt.target.name] =
+                evt.target.name !== 'description' && evt.target.name !== 'period'
                     ? roundCurrency(evt.target.value)
                     : evt.target.value;
 
@@ -85,46 +86,14 @@ class App extends Component {
 
     render() {
         return (
-            <Container className="vcf-container">
-                <Form>
-                    <FormGroup row>
-                        <Label for="vcf-vendor_name" sm={2}>
-                            Vendor Name
-                        </Label>
-                        <Col sm={10}>
-                            <Input
-                                type="text"
-                                name="vendor_name"
-                                id="vcf-vendor_name"
-                                value={this.state.vendor_name}
-                                onChange={this.handleChange}
-                            />
-                        </Col>
-                    </FormGroup>
-
-                    <FormGroup row>
-                        <Label for="vcf-email" sm={2}>
-                            Email
-                        </Label>
-                        <Col sm={10}>
-                            <Input
-                                type="email"
-                                name="email"
-                                id="vcf-email"
-                                onChange={this.handleChange}
-                                value={this.state.email}
-                            />
-                        </Col>
-                    </FormGroup>
-
-                    <Card className="vcf-form-container">
-                        <FormGroup>
-                            <Col sm="12" md={{ size: 3, offset: 5 }}>
-                                <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
-                                    Add Unpaid Invoices
-                                </Button>
-                            </Col>
-                        </FormGroup>
+            <Container>
+                <Grid className="vcf-container">
+                    <form>
+                        <FormCoreInput
+                            handleChange={this.handleChange}
+                            name={this.state.vendor_name}
+                            email={this.state.email}
+                        />
 
                         <FormGroup>
                             <Table responsive>
@@ -137,14 +106,9 @@ class App extends Component {
                                     deleteFn={this.removeInvoice}
                                 />
                             </Table>
-                        </FormGroup>
-                    </Card>
-
-                    <Card className="vcf-form-container">
-                        <FormGroup>
-                            <Col sm="12" md={{ size: 3, offset: 5 }}>
-                                <Button color="primary" onClick={() => this.addInvoice('uninvoiced')}>
-                                    Add Uninvoiced Invoices
+                            <Col sm="12" md={{ size: 3, offset: 0 }}>
+                                <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
+                                    Add Unpaid Invoices
                                 </Button>
                             </Col>
                         </FormGroup>
@@ -160,13 +124,18 @@ class App extends Component {
                                     deleteFn={this.removeInvoice}
                                 />
                             </Table>
+                            <Col sm="12" md={{ size: 3, offset: 0 }}>
+                                <Button color="primary" onClick={() => this.addInvoice('uninvoiced')}>
+                                    Add Uninvoiced Invoices
+                                </Button>
+                            </Col>
                         </FormGroup>
-                    </Card>
 
-                    <Button color="primary" size="lg" block onClick={this.handleSubmit}>
-                        Submit
-                    </Button>
-                </Form>
+                        <Button color="primary" size="lg" block onClick={this.handleSubmit}>
+                            Submit
+                        </Button>
+                    </form>
+                </Grid>
             </Container>
         );
     }
