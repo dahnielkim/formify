@@ -9,6 +9,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormCoreInput from './components/FormCoreInput';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
+import Title from './components/Title';
 import './App.css';
 
 class App extends Component {
@@ -36,8 +37,6 @@ class App extends Component {
         } else {
             this.setState({ [evt.target.name]: evt.target.value });
         }
-
-        console.log('Current State: ', this.state);
     };
 
     addInvoice = type => {
@@ -59,6 +58,7 @@ class App extends Component {
     };
 
     handleSubmit = e => {
+        console.log(this.state, 'state at submit');
         e.preventDefault();
 
         let vars = {};
@@ -87,12 +87,25 @@ class App extends Component {
     render() {
         return (
             <Container>
+                <Title context="Vendor Form" format="h2" />
+
                 <Grid className="vcf-container">
                     <form>
                         <FormCoreInput
-                            handleChange={this.handleChange}
-                            name={this.state.vendor_name}
-                            email={this.state.email}
+                            inputs={[
+                                {
+                                    name: 'vendor_name',
+                                    value: this.state.vendor_name,
+                                    label: 'Vendor Name',
+                                    changeHandler: this.handleChange,
+                                },
+                                {
+                                    name: 'email',
+                                    value: this.state.email,
+                                    label: 'Email',
+                                    changeHandler: this.handleChange,
+                                },
+                            ]}
                         />
 
                         <FormGroup>
