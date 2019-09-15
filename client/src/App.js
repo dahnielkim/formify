@@ -19,16 +19,15 @@ class App extends Component {
         unpaidInvoices: [{ description: '', amount: '', invoiceId: '', period: this._initialPeriod }],
         uninvoicedInvoices: [{ description: '', amount: '', period: this._initialPeriod }],
         vendor_name: '',
-        description: '',
         email: '',
     };
 
     handleChange = evt => {
-        if (['description', 'amount', 'period'].includes(evt.target.name)) {
+        if (['description', 'amount', 'period', 'invoiceId'].includes(evt.target.name)) {
             let invoices = [...this.state[evt.target.dataset.type]];
 
             invoices[evt.target.dataset.id][evt.target.name] =
-                evt.target.name !== 'description' && evt.target.name !== 'period'
+                evt.target.name !== 'description' && evt.target.name !== 'period' && evt.target.name !== 'invoiceId'
                     ? roundCurrency(evt.target.value)
                     : evt.target.value;
 

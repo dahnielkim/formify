@@ -153,6 +153,7 @@ class FormTable extends React.Component {
                                         <TableCell>
                                             <TextField
                                                 type="text"
+                                                disabled={this.props.dataType === 'uninvoicedInvoices' ? true : false}
                                                 name={this.props.id + '-' + index}
                                                 id={this.props.id + '-' + index}
                                                 onChange={this.props.handleChange}
