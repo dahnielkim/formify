@@ -30,3 +30,13 @@
     margin-top: 1rem !important;
     margin-left: 1rem !important;
 }
+
+.vcf-logo {
+    max-height: 300px;
+    max-width: 400px;
+    margin-left: auto;
+}
+
+.vcf-form {
+    margin-right: 4rem;
+}

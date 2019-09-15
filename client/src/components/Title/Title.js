@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Box } from '@material-ui/core';
+import './Title.css';
 
 /**
  * Title component
@@ -7,7 +8,7 @@ import { Typography, Box } from '@material-ui/core';
  * @param {string} format - heading format
  */
 const Title = ({ context, format }) => (
-    <Typography component="div">
+    <Typography className="vcf-title" component="div">
         <Box fontSize={format + '.fontSize'} m={1}>
             {context}
         </Box>

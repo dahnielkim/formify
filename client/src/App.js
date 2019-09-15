@@ -8,6 +8,7 @@ import Title from './components/Title';
 import FormTable from './components/FormTable';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import Image from 'material-ui-image';
 import './App.css';
 
 class App extends Component {
@@ -87,8 +88,12 @@ class App extends Component {
             <Container>
                 <Title context="Vendor Form" format="h2" />
 
+                <div className="vcf-logo">
+                    <Image src="assets/images/juul_logo.png" aspectRatio={16 / 9} disableSpinner />
+                </div>
+
                 <Grid className="vcf-container">
-                    <form>
+                    <form className="vcf-form">
                         <FormCoreInput
                             inputs={[
                                 {
