@@ -7,6 +7,7 @@ import { Grid } from '@material-ui/core';
 import Title from './components/Title';
 import FormTable from './components/FormTable';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
@@ -56,23 +57,23 @@ class App extends Component {
 
     handleSubmit = e => {
         console.log(this.state, 'state at submit');
-        // e.preventDefault();
+        e.preventDefault();
 
-        // let vars = {};
+        let vars = {};
 
-        // // eslint-disable-next-line no-unused-vars
-        // const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
-        //     vars[key] = value;
-        // });
+        // eslint-disable-next-line no-unused-vars
+        const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+            vars[key] = value;
+        });
 
-        // axios
-        //     .post('/api/submit', { ...this.state, ...vars })
-        //     .then(resp => {
-        //         console.log('response', resp);
-        //     })
-        //     .catch(err => {
-        //         console.log('error', err);
-        //     });
+        axios
+            .post('/api/submit', { ...this.state, ...vars })
+            .then(resp => {
+                console.log('response', resp);
+            })
+            .catch(err => {
+                console.log('error', err);
+            });
     };
 
     removeInvoice = (key, idx) => {
