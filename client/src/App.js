@@ -156,7 +156,7 @@ class App extends Component {
                             </div>
                         </FormGroup>
 
-                        <div className="vcf-submit-container">
+                        <div align="right" className="vcf-submit-container">
                             <Button
                                 className="vcf-submit"
                                 variant="contained"
