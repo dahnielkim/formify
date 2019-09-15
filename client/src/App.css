@@ -1,5 +1,7 @@
 .vcf-container {
     margin-top: 1rem;
+    margin-left: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .vcf-form-container {
@@ -10,4 +12,22 @@
 
 *>* {
     border-color: white !important;
+}
+
+.vcf-data-table {
+    margin-bottom: 3rem;
+}
+
+.vcf-submit {
+    margin-top: 1rem;
+    float: right;
+}
+
+.vcf-submit-container {
+    margin-right: 2.5rem;
+}
+
+.vcf-add-btn {
+    margin-top: 1rem !important;
+    margin-left: 1rem !important;
 }

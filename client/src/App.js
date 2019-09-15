@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import TableHeader from './components/TableHeader';
-import TableBody from './components/TableBody';
-import { Button, Form, Label, Col, Table } from 'reactstrap';
-import TextField from '@material-ui/core/TextField';
 import { roundCurrency } from './utils/currencyUtils';
 import Container from '@material-ui/core/Container';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormCoreInput from './components/FormCoreInput';
-import axios from 'axios';
-import Grid from '@material-ui/core/Grid';
+import { Grid } from '@material-ui/core';
 import Title from './components/Title';
+import FormTable from './components/FormTable';
+import Button from '@material-ui/core/Button';
 import './App.css';
 
 class App extends Component {
@@ -17,7 +14,7 @@ class App extends Component {
     _initialPeriod = new Date().getFullYear() + '-01';
 
     state = {
-        unpaidInvoices: [{ description: '', amount: '', period: this._initialPeriod }],
+        unpaidInvoices: [{ description: '', amount: '', invoiceId: '', period: this._initialPeriod }],
         uninvoicedInvoices: [{ description: '', amount: '', period: this._initialPeriod }],
         vendor_name: '',
         description: '',
@@ -59,23 +56,23 @@ class App extends Component {
 
     handleSubmit = e => {
         console.log(this.state, 'state at submit');
-        e.preventDefault();
+        // e.preventDefault();
 
-        let vars = {};
+        // let vars = {};
 
-        // eslint-disable-next-line no-unused-vars
-        const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
-            vars[key] = value;
-        });
+        // // eslint-disable-next-line no-unused-vars
+        // const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+        //     vars[key] = value;
+        // });
 
-        axios
-            .post('/api/submit', { ...this.state, ...vars })
-            .then(resp => {
-                console.log('response', resp);
-            })
-            .catch(err => {
-                console.log('error', err);
-            });
+        // axios
+        //     .post('/api/submit', { ...this.state, ...vars })
+        //     .then(resp => {
+        //         console.log('response', resp);
+        //     })
+        //     .catch(err => {
+        //         console.log('error', err);
+        //     });
     };
 
     removeInvoice = (key, idx) => {
@@ -108,45 +105,67 @@ class App extends Component {
                             ]}
                         />
 
-                        <FormGroup>
-                            <Table responsive>
-                                <TableHeader headerLabels={this._invoiceHeaders} />
-                                <TableBody
-                                    data={this.state.unpaidInvoices}
-                                    typeAbbrev="Unpaid"
-                                    typeLong="unpaidInvoices"
-                                    fn={this.handleChange}
-                                    deleteFn={this.removeInvoice}
-                                />
-                            </Table>
-                            <Col sm="12" md={{ size: 3, offset: 0 }}>
-                                <Button color="primary" onClick={() => this.addInvoice('unpaid')}>
+                        <FormGroup className="vcf-data-table">
+                            <FormTable
+                                headers={['Description', 'Period', 'Amount', 'Invoice No', '']}
+                                rows={this.state.unpaidInvoices}
+                                handleChange={this.handleChange}
+                                handleRemove={this.removeInvoice}
+                                dataType="unpaidInvoices"
+                                id="invoice"
+                                title="Unpaid Invoices"
+                            />
+
+                            <div>
+                                <Button
+                                    variant="contained"
+                                    data-type={this.props.dataType}
+                                    color="primary"
+                                    onClick={() => this.addInvoice('unpaid')}
+                                    aria-label="add"
+                                    className="vcf-add-btn"
+                                >
                                     Add Unpaid Invoices
                                 </Button>
-                            </Col>
+                            </div>
                         </FormGroup>
 
-                        <FormGroup>
-                            <Table responsive>
-                                <TableHeader headerLabels={this._invoiceHeaders} />
-                                <TableBody
-                                    data={this.state.uninvoicedInvoices}
-                                    typeAbbrev="Uninvoiced"
-                                    typeLong="uninvoicedInvoices"
-                                    fn={this.handleChange}
-                                    deleteFn={this.removeInvoice}
-                                />
-                            </Table>
-                            <Col sm="12" md={{ size: 3, offset: 0 }}>
-                                <Button color="primary" onClick={() => this.addInvoice('uninvoiced')}>
+                        <FormGroup className="vcf-data-table">
+                            <FormTable
+                                headers={['Description', 'Period', 'Amount', '', '']}
+                                rows={this.state.uninvoicedInvoices}
+                                handleChange={this.handleChange}
+                                handleRemove={this.removeInvoice}
+                                dataType="uninvoicedInvoices"
+                                id="invoice"
+                                title="Uninvoiced Services"
+                            />
+
+                            <div>
+                                <Button
+                                    variant="contained"
+                                    data-type={this.props.dataType}
+                                    color="primary"
+                                    onClick={() => this.addInvoice('uninvoiced')}
+                                    aria-label="add"
+                                    className="vcf-add-btn"
+                                >
                                     Add Uninvoiced Invoices
                                 </Button>
-                            </Col>
+                            </div>
                         </FormGroup>
 
-                        <Button color="primary" size="lg" block onClick={this.handleSubmit}>
-                            Submit
-                        </Button>
+                        <div className="vcf-submit-container">
+                            <Button
+                                className="vcf-submit"
+                                variant="contained"
+                                color="primary"
+                                onClick={this.handleSubmit}
+                                aria-label="add"
+                            >
+                                Submit
+                            </Button>
+                        </div>
                     </form>
                 </Grid>
             </Container>

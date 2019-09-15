@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import { TextField, Grid, Typography, Box } from '@material-ui/core';
+import './FormCoreInput.css';
 
 /**
  * FormCoreInput component
  */
 export const FormCoreInput = ({ inputs }) => (
-    <Grid container>
+    <Grid container className="form-core-input-root">
         {inputs.map((input, index) => {
             return (
                 <Fragment key={index}>
