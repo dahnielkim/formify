@@ -28,7 +28,8 @@ module.exports = {
                 emailBody += 'unpaid_invoices|';
                 emailBody += req.body.unpaidInvoices[i].description + '|';
                 emailBody += req.body.unpaidInvoices[i].amount + '|';
-                emailBody += req.body.unpaidInvoices[i].period + '\n';
+                emailBody += req.body.unpaidInvoices[i].period + '|';
+                emailBody += req.body.unpaidInvoices[i].invoiceId + '\n';
             }
 
             for (let i = 0; i < req.body.uninvoicedInvoices.length; i++) {
