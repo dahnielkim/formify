@@ -39,7 +39,8 @@ module.exports = {
                 emailBody += 'uninvoiced_invoices|';
                 emailBody += req.body.uninvoicedInvoices[i].description + '|';
                 emailBody += req.body.uninvoicedInvoices[i].amount + '|';
-                emailBody += req.body.uninvoicedInvoices[i].period + '\n';
+                emailBody += req.body.uninvoicedInvoices[i].period + '|';
+                emailBody += '""\n'; // invoiceId (forcing it to be blank due to the python script)
             }
 
             const mailOptions = {
