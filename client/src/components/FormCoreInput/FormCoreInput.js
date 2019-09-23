@@ -10,14 +10,12 @@ export const FormCoreInput = ({ inputs }) => (
         {inputs.map((input, index) => {
             return (
                 <Fragment key={index}>
-                    <Grid item sm={3}>
+                    <Grid item sm={3} xs={6}>
                         <Typography component="div">
-                            <Box textAlign="left" m={1}>
-                                {input.label}
-                            </Box>
+                            <Box textAlign="left">{input.label}</Box>
                         </Typography>
                     </Grid>
-                    <Grid item sm={5}>
+                    <Grid item sm={5} xs={6}>
                         <TextField
                             type="text"
                             fullWidth
