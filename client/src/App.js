@@ -11,6 +11,13 @@ import axios from 'axios';
 import Image from 'material-ui-image';
 import './App.css';
 
+const initialState = {
+    unpaidInvoices: [{ description: '', amount: '', invoiceId: '', period: new Date().getFullYear() + '-01' }],
+    uninvoicedInvoices: [{ description: '', amount: '', period: new Date().getFullYear() + '-01' }],
+    vendor_name: '',
+    email: '',
+};
+
 class App extends Component {
     _invoiceHeaders = ['Description', 'Period', 'Amount ($)', 'Delete'];
     _initialPeriod = new Date().getFullYear() + '-01';
@@ -56,7 +63,6 @@ class App extends Component {
     };
 
     handleSubmit = e => {
-        console.log(this.state, 'state at submit');
         e.preventDefault();
 
         let vars = {};
@@ -69,7 +75,8 @@ class App extends Component {
         axios
             .post('/api/submit', { ...this.state, ...vars })
             .then(resp => {
-                console.log('response', resp);
+                this.setState(initialState);
+                alert('Form has been submitted.');
             })
             .catch(err => {
                 console.log('error', err);
